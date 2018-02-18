@@ -1,0 +1,22 @@
+{
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "region": "eu-west-1",
+            "instance_type": "t2.small",
+            "ami_name": "Windows Server Core 2016 {{timestamp}}",
+            "user_data_file": "./scripts/ConfigureWinRM.ps1",
+            "communicator": "winrm",
+            "winrm_username": "Administrator",
+            "winrm_use_ssl": true,
+            "winrm_insecure": true,
+            "source_ami_filter": {
+                "filters": {
+                  "name": "Windows_Server-2016-English-Core-Base-*"
+                },
+                "owners": ["801119661308"],
+                "most_recent": true
+            }
+        }
+    ]
+}
